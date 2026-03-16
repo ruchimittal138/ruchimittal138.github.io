@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruchi Mittal — AI/ML Principal Data Scientist</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --paper: #f5f2ee;
+      --cream: #ede9e3;
+      --gold: #b8922a;
+      --gold-light: #d4aa55;
+      --muted: #6b6460;
+      --line: rgba(10, 10, 10, 0.12);
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'DM Sans', sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(245, 242, 238, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 4rem 5rem;
+      background: var(--ink);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(184, 146, 42, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-title {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(245, 242, 238, 0.6);
+      line-height: 1.8;
+      max-width: 340px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .hero-links a {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(184, 146, 42, 0.4);
+      padding: 0.5rem 1rem;
+      transition: all 0.25s;
+    }
+
+    .hero-links a:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .hero-right {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 5rem;
+      opacity: 0;
+      animation: fadeIn 1.2s 0.5s forwards;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .stat-item {
+      padding: 2rem;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .stat-item:nth-child(even) {
+      border-right: none;
+    }
+
+    .stat-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.5s forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1rem 0 2.5rem;
+    }
+
+    /* ABOUT */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    #about .section-title {
+      color: var(--paper);
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(245, 242, 238, 0.75);
+    }
+
+    .about-body p+p {
+      margin-top: 1.2rem;
+    }
+
+    .about-highlight {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-style: italic;
+      color: var(--gold-light);
+      line-height: 1.5;
+      margin-bottom: 1.8rem;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--paper);
+    }
+
+    .exp-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .exp-item.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .exp-meta {
+      padding-top: 0.3rem;
+    }
+
+    .exp-year {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-company {
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .exp-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .exp-points li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .exp-points li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--cream);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .skill-card {
+      padding: 2.5rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-card:nth-child(3n) {
+      border-right: none;
+    }
+
+    .skill-card:nth-last-child(-n+3) {
+      border-bottom: none;
+    }
+
+    .skill-cat {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-name {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 0.25rem 0.6rem;
+      color: var(--muted);
+    }
+
+    /* PUBLICATIONS */
+    #publications {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    #publications .section-title {
+      color: var(--paper);
+    }
+
+    .pub-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(245, 242, 238, 0.12);
+    }
+
+    .pub-tab {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      color: rgba(245, 242, 238, 0.4);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.25s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .pub-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .pub-list {
+      display: none;
+    }
+
+    .pub-list.active {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pub-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(245, 242, 238, 0.08);
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .pub-num {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--gold);
+      padding-top: 0.2rem;
+    }
+
+    .pub-title {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(245, 242, 238, 0.85);
+    }
+
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      padding-top: 0.2rem;
+      white-space: nowrap;
+    }
+
+    /* PATENTS */
+    #patents {
+      background: var(--cream);
+    }
+
+    .patents-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .patent-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .patent-card::after {
+      content: 'PATENT';
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      border: 1px solid rgba(184, 146, 42, 0.4);
+      padding: 0.2rem 0.5rem;
+    }
+
+    .patent-office {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .patent-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    /* EDUCATION */
+    #education {
+      background: var(--paper);
+    }
+
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 850px;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .edu-year {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      padding-top: 0.3rem;
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-institution {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .edu-thesis {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 7rem 4rem;
+    }
+
+    #contact .section-title {
+      color: var(--paper);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .contact-sub {
+      color: rgba(245, 242, 238, 0.5);
+      font-size: 0.85rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--paper);
+      border: 1px solid rgba(245, 242, 238, 0.25);
+      padding: 0.8rem 2rem;
+      transition: all 0.25s;
+    }
+
+    .contact-link:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .contact-link.primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .contact-link.primary:hover {
+      background: var(--gold-light);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 4rem;
+      background: var(--ink);
+      border-top: 1px solid rgba(245, 242, 238, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: rgba(245, 242, 238, 0.25);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.65rem;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left,
+      .hero-right {
+        padding: 6rem 1.5rem 3rem;
+      }
+
+      .hero-right {
+        padding-top: 2rem;
+      }
+
+      #about {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 4rem 1.5rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .patents-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .edu-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-logo">Ruchi Mittal</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#publications">Research</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Principal Data Scientist · AI/ML · PhD</div>
+      <h1 class="hero-name">Ruchi<br><em>Mittal</em></h1>
+      <p class="hero-title">16+ years shaping intelligent systems — from Generative AI and LLMs to enterprise-scale ML
+        pipelines. PhD, researcher, and trusted advisor to CXOs.</p>
+      <div class="hero-links">
+        <a href="https://scholar.google.com/citations?user=0SDbQi0AAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/ruchi-mittal-a5737539/" target="_blank">LinkedIn</a>
+        <a href="#contact">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-num">16+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Published Papers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Patents Granted</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">AI/ML</div>
+          <div class="stat-label">Thought Leader</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>scroll
+    </div>
+  </section>
+
+  <section id="about">
+    <div>
+      <div class="section-label">Profile</div>
+      <h2 class="section-title">About<br>Me</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="about-body">
+      <p class="about-highlight">"Bridging cutting-edge AI research with real-world enterprise impact."</p>
+      <p>I hold a PhD in Computer Science from the University of Delhi and have spent over 16 years at the intersection
+        of academia and industry — specialising in Generative AI, Large Language Models, NLP, computer vision, and
+        full-stack development.</p>
+      <p>As Principal Data Scientist at Iconic Data (Japan), I architect multi-agent AI ecosystems and collaborate
+        directly with CXOs to translate strategic goals into intelligent solutions. I am also a Learning Facilitator at
+        Emeritus, delivering AI/ML courses for IITs and Imperial Business School, London.</p>
+      <p>Recognised as a Subject Matter Expert in AI/ML, I have authored 50+ papers in SCI, ABDC, and Scopus-indexed
+        journals, hold 2 patents, and have mentored multinational teams across industries and continents.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="exp-inner">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Experience</h2>
+      <div class="divider"></div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Jan 2025 – Present</div>
+          <div class="exp-company">Emeritus</div>
+        </div>
+        <div>
+          <div class="exp-role">Learning Facilitator</div>
+          <ul class="exp-points">
+            <li>Subject-matter expert in AI and ML for leading institutions including IITs and Imperial Business School,
+              London.</li>
+            <li>Delivering advanced professional courses on Generative AI, LLMs, and applied machine learning to working
+              professionals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Apr 2022 – Present</div>
+          <div class="exp-company">Iconic Data, Japan</div>
+        </div>
+        <div>
+          <div class="exp-role">Principal Data Scientist</div>
+          <ul class="exp-points">
+            <li>Architected a multi-agent AI analytics ecosystem integrating GPT-4, Google Vertex AI, and LangChain for
+              HR, Finance, Operations, and Business Intelligence.</li>
+            <li>Built an AI-driven Management Quality Improvement System with continuous feedback loops and industry
+              benchmarking.</li>
+            <li>Delivered 90% faster analytics turnaround, transforming manual reporting into a strategic intelligence
+              platform.</li>
+            <li>Implemented ensemble ML pipelines (SVM, Random Forest, Stacked) achieving 83.9% accuracy in talent and
+              performance forecasting.</li>
+            <li>Fine-tuned LLMs achieving 30% improvement in model accuracy; designed a Japanese Resume Parsing app
+              enhancing salary prediction by 60%.</li>
+            <li>Built scalable enterprise architecture (React.js, Node.js, Firebase) supporting real-time dashboards and
+              secure multi-tenant operations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Aug 2019 – Mar 2022</div>
+          <div class="exp-company">GITM, Jhajjar</div>
+        </div>
+        <div>
+          <div class="exp-role">Assistant Professor</div>
+          <ul class="exp-points">
+            <li>Taught Computer Science theory and practicals to BCA, B.Tech., MCA, MBA & M.Tech. students.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Jan 2016 – May 2019</div>
+          <div class="exp-company">NSIT, New Delhi</div>
+        </div>
+        <div>
+          <div class="exp-role">Teaching cum Research Fellow</div>
+          <ul class="exp-points">
+            <li>Taught B.Tech. Computer Science and conducted PhD research in social network analysis and clustering
+              algorithms.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Jun 2013 – Jan 2014</div>
+          <div class="exp-company">Google India</div>
+        </div>
+        <div>
+          <div class="exp-role">Software Engineer</div>
+          <ul class="exp-points">
+            <li>Designed and implemented UI modules for the in-house business solution SIMBA (Streamlined Information
+              Manager for Business Agility).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Aug 2012 – Jan 2013</div>
+          <div class="exp-company">Impetus, Noida</div>
+        </div>
+        <div>
+          <div class="exp-role">Software Engineer</div>
+          <ul class="exp-points">
+            <li>Designed and implemented TSDB4Cassandra — a time series database from scratch to store large-scale
+              structured, semi-structured, and unstructured data.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-year">Jul 2010 – Jul 2011</div>
+          <div class="exp-company">IBM India Research Lab</div>
+        </div>
+        <div>
+          <div class="exp-role">Research Intern</div>
+          <ul class="exp-points">
+            <li>Analyzed social networks formed by telecom customers and derived non-trivial social intelligence for
+              business intelligence applications.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Key Skills</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Generative AI</div>
+        <div class="skill-name">LLMs & Transformers</div>
+        <div class="skill-tags">
+          <span class="tag">GPT-4</span><span class="tag">BERT</span><span class="tag">LLaMA</span>
+          <span class="tag">Fine-tuning</span><span class="tag">Prompt Engineering</span><span class="tag">Few-shot
+            Learning</span><span class="tag">LangChain</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Machine Learning</div>
+        <div class="skill-name">Modelling & Pipelines</div>
+        <div class="skill-tags">
+          <span class="tag">Deep Learning</span><span class="tag">CNNs</span><span class="tag">XGBoost</span>
+          <span class="tag">SVM</span><span class="tag">Random Forest</span><span class="tag">NLP</span><span
+            class="tag">Sentiment Analysis</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Frameworks</div>
+        <div class="skill-name">AI Tooling</div>
+        <div class="skill-tags">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Hugging Face</span>
+          <span class="tag">Keras</span><span class="tag">SpaCy</span><span class="tag">NLTK</span><span
+            class="tag">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Engineering</div>
+        <div class="skill-name">Full-stack & MLOps</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">React.js</span><span class="tag">Node.js</span>
+          <span class="tag">Firebase</span><span class="tag">Docker</span><span class="tag">GCP</span><span
+            class="tag">AWS</span><span class="tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Data</div>
+        <div class="skill-name">Analytics & Visualisation</div>
+        <div class="skill-tags">
+          <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Pandas</span>
+          <span class="tag">NumPy</span><span class="tag">SQL</span><span class="tag">MongoDB</span><span
+            class="tag">Plotly</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Deployment</div>
+        <div class="skill-name">Distributed AI Systems</div>
+        <div class="skill-tags">
+          <span class="tag">Model Quantization</span><span class="tag">Multi-agent</span>
+          <span class="tag">Vertex AI</span><span class="tag">MLOps</span><span class="tag">REST APIs</span><span
+            class="tag">Spring Boot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="section-label">Research</div>
+    <h2 class="section-title">Publications</h2>
+    <div class="divider"></div>
+    <div class="pub-tabs">
+      <button class="pub-tab active" onclick="showTab(event,'journals')">Journal Articles</button>
+      <button class="pub-tab" onclick="showTab(event,'conferences')">Conference Papers</button>
+      <button class="pub-tab" onclick="showTab(event,'chapters')">Book Chapters</button>
+    </div>
+    <div class="pub-list active" id="journals">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-title">Classification and Comparative Evaluation of Community Detection Algorithms —
+          <em>Archives of Computational Methods in Engineering</em>
+        </div>
+        <div class="pub-venue">SCI · IF 7.24</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-title">An Extensive Study on Deep Learning: Techniques, Applications — <em>Archives of
+            Computational Methods in Engineering</em></div>
+        <div class="pub-venue">SCI · IF 7.24</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-title">A robust approach for licence plate detection using deep learning — <em>Inteligencia
+            Artificial</em></div>
+        <div class="pub-venue">2024</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-title">Blockchain-based deep learning in IoT, healthcare and cryptocurrency price prediction —
+          <em>International Journal of Quality & Reliability Management</em>
+        </div>
+        <div class="pub-venue">2024</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-title">A bibliometric analysis of cyber security and cyber forensics research — <em>Results in
+            Control and Optimization</em></div>
+        <div class="pub-venue">2023</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-title">Information retrieval using machine learning from breast cancer diagnosis —
+          <em>Multimedia Tools and Applications</em>
+        </div>
+        <div class="pub-venue">2023</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">07</div>
+        <div class="pub-title">An evaluation of denoising techniques and classification of biometric images —
+          <em>Multimedia Tools and Applications</em>
+        </div>
+        <div class="pub-venue">2023</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">08</div>
+        <div class="pub-title">Discovering bottlenecks entities in multi-layer social networks — <em>Journal of Discrete
+            Mathematical Sciences and Cryptography</em></div>
+        <div class="pub-venue">eSCI · Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">09</div>
+        <div class="pub-title">Automated Cryptocurrencies Prices Prediction Using Machine Learning — <em>ICT
+            Journal</em></div>
+        <div class="pub-venue">UGC Care</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">10</div>
+        <div class="pub-title">Detection of Suspicious or Un-Trusted Users in Crypto-currency Financial Trading
+          Applications — <em>International Journal of Digital Crime and Forensics</em></div>
+        <div class="pub-venue">eSCI · Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">11</div>
+        <div class="pub-title">Trustworthy AI in Biometrics: A Comprehensive Review of Trends and Challenges —
+          <em>Journal of Graphic Era University</em>
+        </div>
+        <div class="pub-venue">2025</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">12</div>
+        <div class="pub-title">Hindi Analyser: A Context-Aware Approach for Semantic Clustering of Hindi Words —
+          <em>Journal of Multi Disciplinary Engineering Technologies</em>
+        </div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+    </div>
+    <div class="pub-list" id="conferences">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-title">Identifying Prominent Authors from Scientific Collaboration Multiplex Social Networks —
+          <em>ICICC, Springer LNNS</em>
+        </div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-title">Anomaly detection in multiplex networks — <em>Procedia Computer Science</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-title">Mining top-k structural holes in multiplex networks — <em>IEEE ICCCNT 2017</em></div>
+        <div class="pub-venue">IEEE · Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-title">Cross-Layer Closeness Centrality in Multiplex Social Networks — <em>IEEE ICCCNT 2018</em>
+        </div>
+        <div class="pub-venue">IEEE · Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-title">Incorporating Deep Learning for Predicting Cryptocurrency Prices — <em>IJISMS</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-title">Forecasting the Price of Cryptocurrencies and Validating Using ARIMA — <em>IJISMS</em>
+        </div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">07</div>
+        <div class="pub-title">Innovative Framework for Data Structure Using Design Pattern — <em>SocProS 2011,
+            Springer</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">08</div>
+        <div class="pub-title">Wireless sensor networks for monitoring environmental activities — <em>IEEE ICCIC
+            2010</em></div>
+        <div class="pub-venue">IEEE · Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">09</div>
+        <div class="pub-title">Analyzing the Structures of Clusters in Multi-Layer Biological Networks —
+          <em>International Conference on Secure Cyber Computing and Communication (ICSCCC 2018)</em>
+        </div>
+        <div class="pub-venue">IEEE · Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">10</div>
+        <div class="pub-title">Characterizing the Properties of the Multiplex Social Networks —
+          <em>Proceedings of INDIACOM 2018</em>
+        </div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">11</div>
+        <div class="pub-title">Collaborative Approach for Trend Analysis Using Clustering Mechanisms and Big Data
+          Technologies —
+          <em>International Conference Proceedings</em>
+        </div>
+        <div class="pub-venue">2018</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">12</div>
+        <div class="pub-title">Behavioral Analysis of Social Network —
+          <em>4th International Conference on Computing for Sustainable Global Development (INDIACom 2017)</em>
+        </div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+    </div>
+    <div class="pub-list" id="chapters">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-title">Analysis of Multiplex Social Networks Using Nature-Inspired Algorithms — <em>IGI Global:
+            Nature-Inspired Algorithms for Big Data Frameworks</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-title">An Insight into Tools and Software Used in AI, ML and Data Analytics — <em>AI and ML
+            Paradigms for Health Monitoring Systems</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-title">A Survey of Popular Digital Forensic Tools — <em>De Gruyter Book Series</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-title">Malicious use of Machine Learning in Green ICT — <em>CRC Book Series</em></div>
+        <div class="pub-venue">Scopus</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-title">Classifying the Influential Individuals in Multi-Layer Social Networks —
+          <em>Research Anthology on Usage, Identity, and Impact of Social Media on Society and Culture</em>
+        </div>
+        <div class="pub-venue">IGI Global · 2022</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-title">Fog Computing Security Concerns in Healthcare Using IoT and Blockchain —
+          <em>AI-Based Advanced Optimization Techniques for Edge Computing</em>
+        </div>
+        <div class="pub-venue">Scopus · 2025</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">07</div>
+        <div class="pub-title">Blockchain and IoT for Smart Agriculture: Enhancing Food Security and Sustainability —
+          <em>Smart Technologies for Transforming Next-Generation Agriculture</em>
+        </div>
+        <div class="pub-venue">2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="patents">
+    <div class="section-label">Intellectual Property</div>
+    <h2 class="section-title">Patents</h2>
+    <div class="divider"></div>
+    <div class="patents-grid">
+      <div class="patent-card">
+        <div class="patent-office">Indian Patent Office · Published</div>
+        <div class="patent-title">A Social Networking Platform for Reducing Transmission of Diseases</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-office">UK Patent Office · Granted</div>
+        <div class="patent-title">AI-Based Eye-Flu Detection Device (Design Patent)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="divider"></div>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-year">2016 – 2021</div>
+        <div>
+          <div class="edu-degree">Ph.D. in Computer Science</div>
+          <div class="edu-institution">University of Delhi (Netaji Subhas Institute of Technology), New Delhi</div>
+          <div class="edu-thesis">Thesis: Design and Analysis of Clustering Methods for Social Networks · Supervisor:
+            Dr. M. P. S. Bhatia</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2009 – 2011</div>
+        <div>
+          <div class="edu-degree">M.Tech. in Information Systems</div>
+          <div class="edu-institution">Netaji Subhas Institute of Technology, New Delhi · GPA 8.35/10</div>
+          <div class="edu-thesis">Thesis: Community Characterization in Social Networks</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2004 – 2008</div>
+        <div>
+          <div class="edu-degree">B.E. in Computer Science & Engineering</div>
+          <div class="edu-institution">Maharshi Dayanand University, Haryana · 79.33% — First Class with Honors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="contact-sub">Open to collaborations, speaking engagements, research partnerships, and senior AI/ML roles.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:ruchi.mittal138@gmail.com" class="contact-link primary">ruchi.mittal138@gmail.com</a>
+      <a href="tel:+918607110642" class="contact-link">+91 86071 10642</a>
+      <a href="https://www.linkedin.com/in/ruchi-mittal-a5737539/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=0SDbQi0AAAAJ&hl=en" target="_blank" class="contact-link">Google
+        Scholar</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Ruchi Mittal · All rights reserved</p>
+    <p>Principal Data Scientist · AI/ML · PhD · Author · Patent Holder</p>
+  </footer>
+
+  <script>
+    function showTab(e, id) {
+      document.querySelectorAll('.pub-list').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.pub-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      e.target.classList.add('active');
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.exp-item').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
